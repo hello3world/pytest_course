@@ -8,6 +8,7 @@ class DocumentEditor:
         self.content += text
 
     def clear(self):
+        self.history.append(self.content)
         self.content = ""
 
     def is_empty(self):
