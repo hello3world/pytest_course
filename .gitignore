@@ -45,3 +45,5 @@ htmlcov/
 
 # Logs
 *.log
+python.py
+readmi.md
