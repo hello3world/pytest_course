@@ -15,4 +15,9 @@ class DocumentEditor:
         return self.content == ""
 
     def get_last_content(self):
+        if len(self.history) == 0:
+            raise ValueError(
+                """Content is empty, 
+                no previous operations 
+                were done""")
         return self.history[-1]

@@ -23,8 +23,8 @@ class TestDocumentEditor:
         
         expected_last_content = editor.history[-1]
         
-        # last_content = editor.get_last_content()
-        last_content = 'text'
+        last_content = editor.get_last_content()
+        # last_content = 'text'
         
         error_msg = (f'Last content is expected to be '
                      f'the content before last operation. '
@@ -34,5 +34,12 @@ class TestDocumentEditor:
         # assert last_content == expected_last_content, error_msg
         if last_content != expected_last_content:
             pytest.fail(error_msg)
-
+            
+    def test_raise_error_if_no_history(self):
+        editor = DocumentEditor()
+        # with pytest.raises(Exception, match="No history"):
+        with pytest.raises(Exception) as exc_info:
+            editor.get_last_content()
+        assert str(exc_info.value).startswith('Content is empty')
+        assert exc_info.type == ValueError
 # pytest document-editor\tests\test_main.py -vv
