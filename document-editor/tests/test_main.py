@@ -73,4 +73,5 @@ class TestDocumentEditor:
         # THEN: content should be 'TextText 2' AND editor should not be empty
         assert editor.content == 'TextText 2'
         assert not editor.is_empty()
+        
 # pytest document-editor\tests\test_main.py -vv
