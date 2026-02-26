@@ -2,8 +2,6 @@ from src.ecommerce import Product, OrderError, process_order
 from datetime import datetime
 import pytest
 
-
-
 def test_process_order():
     bananas = Product(
         name="Bananas",

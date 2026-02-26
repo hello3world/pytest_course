@@ -29,6 +29,7 @@ async def upload_file(user_id: int, file: UploadFile = File(...)):
 
 @app.get("/analytics/sales")
 def analytics_sales():
+    process_stock()
     is_sales_db_enabled = os.environ.get("SALES_DB_ENABLED", "true").lower() in ['true', 'yes', '1']
 
     if is_sales_db_enabled:
@@ -51,6 +52,9 @@ def fetch_sales_from_db() -> float:
 @app.get("/analytics/stock")
 def analytics_stock():
     return {"stock": 42}
+
+def process_stock():
+    time.sleep(1)
 
 
 if __name__ == "__main__":
