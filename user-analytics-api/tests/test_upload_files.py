@@ -31,3 +31,12 @@ def test_upload_has_expected_response(client, tmp_file):
     assert json_resp["user_id"] == 123
     assert json_resp["filename"] == "test.txt"
     assert json_resp["content"] == "Hello world!"
+
+def test_upload_logs(client, tmp_file, capsys):
+    with tmp_file.open("rb") as f:
+        response = client.post(
+            "/user/123/file",
+            files={"file": ("test.txt", f, "text/plain")}
+        )
+    captures = capsys.readouterr()
+    assert "Received file: test.txt from user 123" in captures.out
