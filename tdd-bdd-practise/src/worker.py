@@ -7,3 +7,4 @@ class Worker:
     def get_annual_salary(self):
         annual_salary = self.salary * self.hours_per_week * 4 * 12
         return annual_salary
+ 
